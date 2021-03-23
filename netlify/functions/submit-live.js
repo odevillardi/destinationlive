@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
     url: url,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization', 'token'+token,
+      'Authorization': 'token'+token,
       'Content-Type': 'text/plain'
     },
     data: data
