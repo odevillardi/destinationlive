@@ -48,8 +48,8 @@
   function getArtist() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const artist = urlParams.get('artist');
-    const place = urlParams.get('place');
+    const artist = decodeURI(urlParams.get('artist'));
+    const place = decodeURI(urlParams.get('place'));
     const liveid = urlParams.get('liveid');
     const videoID = urlParams.get('videoid');
     const hit = urlParams.get('hit');

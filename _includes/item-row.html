@@ -1,9 +1,9 @@
 <script>getLiveHit('{{ live.data.liveid }}');</script>
 <tr class="item row">
   <td class="lead td-qui">
-    <strong><em>{{ live.data.qui | strip_html | strip_newlines }}</em></strong>
+    <strong><em>{{ live.data.qui | url_decode | strip_html | strip_newlines }}</em></strong>
   </td>
-  <td class="lead td-ou"><strong><em>{{ live.data.ou | strip_html | strip_newlines }}</em></strong></td>
+  <td class="lead td-ou"><strong><em>{{ live.data.ou | url_decode | strip_html | strip_newlines }}</em></strong></td>
   <td class="text-center">
     <a class="button u-full-width" href="/merci.html?artist={{ live.data.qui | strip_html | strip_newlines | url_encode }}&place={{ live.data.ou | strip_html | strip_newlines | encode_url }}&liveid={{ live.data.liveid | strip_html | strip_newlines | url_encode }}&videoid={{ live.data.videoid | strip_html | strip_newlines | url_encode }}">
       <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">

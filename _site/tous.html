@@ -65,8 +65,8 @@
   function getArtist() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const artist = urlParams.get('artist');
-    const place = urlParams.get('place');
+    const artist = decodeURI(urlParams.get('artist'));
+    const place = decodeURI(urlParams.get('place'));
     const liveid = urlParams.get('liveid');
     const videoID = urlParams.get('videoid');
     const hit = urlParams.get('hit');
@@ -247,6 +247,62 @@
         </svg>
       </th>
     </tr>
+    
+      
+      <script>getLiveHit('t-t-chamb-ry');</script>
+<tr class="item row">
+  <td class="lead td-qui">
+    <strong><em>Tété</em></strong>
+  </td>
+  <td class="lead td-ou"><strong><em>Chambéry</em></strong></td>
+  <td class="text-center">
+    <a class="button u-full-width" href="/merci.html?artist=T%25C3%25A9t%25C3%25A9&place=Chamb%C3%A9ry&liveid=t-t-chamb-ry&videoid=AHb1V1g8DWw">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+      </svg>
+      Voir
+    </a>
+  </td>
+  <td><button id="button-t-t-chamb-ry"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('t-t-chamb-ry'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="t-t-chamb-ry"></span></i>
+</button>
+</td>
+</tr>
+
+    
+      
+      <script>getLiveHit('yodelicelyon');</script>
+<tr class="item row">
+  <td class="lead td-qui">
+    <strong><em>Yodelice</em></strong>
+  </td>
+  <td class="lead td-ou"><strong><em>Lyon</em></strong></td>
+  <td class="text-center">
+    <a class="button u-full-width" href="/merci.html?artist=Yodelice&place=Lyon&liveid=yodelicelyon&videoid=_K-4BYzQ-bI">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+      </svg>
+      Voir
+    </a>
+  </td>
+  <td><button id="button-yodelicelyon"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('yodelicelyon'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="yodelicelyon"></span></i>
+</button>
+</td>
+</tr>
+
     
       
       <script>getLiveHit('arctic-monkeysparis');</script>
