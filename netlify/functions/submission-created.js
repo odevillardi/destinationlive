@@ -15,13 +15,17 @@ exports.handler = async (event, context) => {
   // formPayload = btoa(JSON.stringify(formPayload));
   // console.log(formPayload);
 
+  // var content = "eyJudW1iZXIiOiAiMSJ9";
+
+  var content = btoa('{"number": "1"}');
+
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
   date = date.toISOString();
 
   const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_data/every-live/live-${date}.json`;
 
-  var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\"eyJudW1iZXIiOiAiMSJ9\"}";
+  var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+content+"\"}";
 
   var config = {
     method: 'PUT',
