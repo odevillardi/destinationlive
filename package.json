@@ -4,8 +4,7 @@
   "description": "Destinationlive",
   "author": "Olivier de Villardi",
   "dependencies": {
-    "form-data": "^4.0.0",
-    "node-fetch": "^2.6.1",
+    "btoa": "^1.2.1",
     "axios": "^0.21.1"
   }
 }

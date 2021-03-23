@@ -1,5 +1,6 @@
 const querystring = require("querystring");
 const axios = require('axios');
+const btoa = require('btoa');
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== "POST") {
