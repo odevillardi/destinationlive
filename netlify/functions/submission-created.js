@@ -9,7 +9,7 @@ exports.handler = async (event, context) => {
 
   var formPayload = JSON.parse(event.body).payload;
 
-  formPayload = btoa(JSON.stringify(formPayload));
+  formPayload = btoa(encodeURIComponent(JSON.stringify(formPayload)));
 
   console.log(formPayload);
 
