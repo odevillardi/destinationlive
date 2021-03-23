@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Destination->live</title>
+  <meta name="description" content="Quel artiste, groupe, humoriste… tu veux voir ? Fais-le venir près de chez toi !">
+
+  <link rel="stylesheet" href="/css/main.css" type="text/css">
+  <link rel="canonical" href="http://localhost:4000/">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/img/favicon/site.webmanifest">
+  <script>
+  function putArtist() {
+    var artist = document.querySelector("#qui").value.trim();
+    var place = document.querySelector("#ou").value.trim();
+    var liveid = artist.toLowerCase()+place.toLowerCase();
+    liveid = liveid.replace(/[^A-Z0-9]+/ig, "-");
+    document.getElementById("live-id").value = liveid;
+    var videoid = document.getElementById("video-id").value;
+    document.querySelector("#liveform").action = "/merci.html?artist="+encodeURI(artist)+"&place="+encodeURI(place)+"&liveid="+liveid+"&hit=1&videoid="+videoid;
+  }
+
+  function fillVideoId() {
+    var artist = encodeURI(document.querySelector("#qui").value);
+    getVideo(artist);
+  }
+
+  function getLiveHit(liveID) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.countapi.xyz/get/destinationlive.net/"+liveID);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+      document.getElementById(liveID).innerText = this.response.value;
+    }
+    xhr.send();
+  }
+
+  function hitLiveHit(liveID) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "https://api.countapi.xyz/hit/destinationlive.net/"+liveID);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+      document.getElementById("button-"+liveID).disabled = true;
+      document.getElementById(liveID).innerText = this.response.value;
+    }
+    xhr.send();
+  }
+
+  function fillButtonHit() {
+    const queryString = window.location.search ;
+    const urlParams = new URLSearchParams(queryString) ;
+    var liveid = urlParams.get("liveid") ;
+    document.querySelector("#button-live-id").id = "button-"+liveid ;
+    document.querySelector("#live-id").id = liveid ;
+    getLiveHit(liveid) ;
+    document.querySelector("#button-"+liveid).setAttribute("onClick", "javascript:hitLiveHit('"+liveid+"'); return true;") ;
+  }
+
+  function getArtist() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const artist = urlParams.get('artist');
+    const place = urlParams.get('place');
+    const liveid = urlParams.get('liveid');
+    const videoID = urlParams.get('videoid');
+    const hit = urlParams.get('hit');
+    if (artist) {
+      document.querySelector("#artist").innerHTML = artist;
+      if (videoID) {
+        putVideo(videoID);
+      }
+      else {
+        getVideo(artist,1);
+      }
+    }
+    if (place) { document.querySelector("#place").innerHTML = place; }
+    if (hit) { hitLiveHit(liveid); }
+  }
+
+  function getVideo(artist, option) {
+    var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+
+    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+artist+"+live&key=AIzaSyBPMPhoveG3cplA2VeHdYGkVb8e9KUaOQU", requestOptions)
+      .then(response => response.text())
+      .then(data => {
+        var json = JSON.parse(data);
+        var idVideo = json.items[0].id.videoId;
+        if (option) {
+          putVideo(idVideo);
+        }
+        else {
+          document.getElementById("video-id").value = idVideo;
+        }
+      })
+      .catch(error => console.log('error', error));
+  }
+
+  function putVideo(id) {
+    document.querySelector("#videoContainer").innerHTML = '<iframe class="embed-responsive-16by9" src="https://www.youtube-nocookie.com/embed/'+id+'" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><noscript>Une vidéo de votre live vous attend, si vous activez javascript…</noscript>';
+  }
+
+  var w3 = {};
+
+  w3.getElements = function (id) {
+    if (typeof id == "object") {
+      return [id];
+    } else {
+      return document.querySelectorAll(id);
+    }
+  };
+
+  w3.sortHTML = function(id, sel, sortvalue, int) {
+  var a, b, i, ii, y, bytt, v1, v2, cc, j;
+    a = w3.getElements(id);
+    for (i = 0; i < a.length; i++) {
+      for (j = 0; j < 2; j++) {
+        cc = 0;
+        y = 1;
+        while (y == 1) {
+          y = 0;
+          b = a[i].querySelectorAll(sel);
+          for (ii = 0; ii < (b.length - 1); ii++) {
+            bytt = 0;
+            if (sortvalue) {
+              v1 = b[ii].querySelector(sortvalue).innerText;
+              v2 = b[ii + 1].querySelector(sortvalue).innerText;
+            } else {
+              v1 = b[ii].innerText;
+              v2 = b[ii + 1].innerText;
+            }
+            v1 = v1.toLowerCase();
+            v2 = v2.toLowerCase();
+            if (int == '1') {
+              v1 = parseInt(v1);
+              v2 = parseInt(v2);
+            }
+            if ((j == 0 && (v1 > v2)) || (j == 1 && (v1 < v2))) {
+              bytt = 1;
+              break;
+            }
+          }
+          if (bytt == 1) {
+            b[ii].parentNode.insertBefore(b[ii + 1], b[ii]);
+            y = 1;
+            cc++;
+          }
+        }
+        if (cc > 0) {break;}
+      }
+    }
+  };
+
+  w3.filterHTML = function(id, sel, filter) {
+    var a, b, c, i, ii, iii, hit;
+    a = w3.getElements(id);
+    for (i = 0; i < a.length; i++) {
+      b = a[i].querySelectorAll(sel);
+      for (ii = 0; ii < b.length; ii++) {
+        hit = 0;
+        if (b[ii].innerText.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+          hit = 1;
+        }
+        c = b[ii].getElementsByTagName("*");
+        for (iii = 0; iii < c.length; iii++) {
+          if (c[iii].innerText.toUpperCase().indexOf(filter.toUpperCase()) > -1) {
+            hit = 1;
+          }
+        }
+        if (hit == 1) {
+          b[ii].parentNode.style.display = "";
+        } else {
+          b[ii].parentNode.style.display = "none";
+        }
+      }
+    }
+  };
+</script>
+
+</head>
+
+  <body class="home container">
+    <header class="text-center">
+  <h1 class="logo">
+    <a href="/">
+      <span class="logo-desti">Desti</span><span class="logo-nation">nation</span><span class="logo-live">live</span>
+    </a>
+  </h1>
+</header>
+
+    <div class="hero">
+  <h2>Les lives te manquent&nbsp;?</h2>
+  <div class="row">
+    <div class="seven columns">
+      <p><p>Dis-nous qui tu veux voir en live ! Et vote pour les propositions qui te bottent, ça les fera peut-être arriver près de chez toi.</p>
+</p>
+    </div>
+  </div>
+  
+    <ul class="list-inline menu">
+      <li><a class="button" href="#live-add">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+        </svg>
+        Proposer un live</a></li>
+      <li class="item-break"><a class="button button-secondary" href="/tous.html">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
+          <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+        </svg>
+        Voir les lives proposés</a></li>
+    </ul>
+  
+</div>
+
+    <div id="live-add">
+      <h2 class="text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" class="icon" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg><br>
+        Proposer un live
+      </h2>
+      <div class="live-form dark-bg">
+  <form id="liveform"
+      name="qui-ou"
+      action="/merci.html?artist="
+      method="POST"
+      netlify-honeypot="bot-field"
+      data-netlify="true">
+    <input id="live-id" type="hidden" name="live-id">
+    <input id="video-id" type="hidden" name="video-id">
+    <label class="hidden">Ne pas remplir ce champ<input name="bot-field"></label>
+    <div class="row">
+      <div class="six columns">
+        <label class="title title-h3" for="qui">Tu veux voir qui ?</label>
+        <input  class="u-full-width"
+                id="qui" type="text"
+                name="qui"
+                placeholder="Artiste, groupe, humoriste…"
+                oninput="javascript:putArtist()"
+                onblur="javascript:fillVideoId()"
+                required>
+      </div>
+      <div class="four columns">
+        <label class="title title-h3" for="ou">Où ?</label>
+        <input  class="u-full-width"
+                id="ou" type="text"
+                name="ou"
+                placeholder="Ville, festival…"
+                oninput="javascript:putArtist()" required>
+      </div>
+      <div class="two columns">
+        <label class="title title-h3">Go</label>
+        <button class="button button-primary u-full-width" type="submit">-></button>
+      </div>
+    </div>
+  </form>
+</div>
+
+    </div>
+    <div id="recent-lives" class="live-entries">
+      <h2 class="text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" class="icon" viewBox="0 0 16 16">
+          <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>
+        </svg><br>
+        Lives récemment proposés
+      </h2>
+      
+
+
+
+
+  
+  <script>getLiveHit('foo-fighterschamb-ry');</script>
+<div id="link-foo-fighterschamb-ry" class="live-entry row dark-bg align-center">
+  <div class="eight columns">
+    <h3>Foo Fighters <span class="text-jet text-pink blue-text-shadow">-></span> Chambéry</h3>
+  </div>
+    <div class="two columns live-links">
+      <a class="button u-full-width" href="/merci.html?artist=Foo+Fighters&place=Chambéry&liveid=foo-fighterschamb-ry&videoid=v6-95oD6pPI">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" width="1em" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+        </svg>
+        Voir
+      </a>
+    </div>
+    <div class="two columns live-count">
+      <button id="button-foo-fighterschamb-ry"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('foo-fighterschamb-ry'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="foo-fighterschamb-ry"></span></i>
+</button>
+
+    </div>
+</div>
+
+
+  
+  <script>getLiveHit('daft-punkparis');</script>
+<div id="link-daft-punkparis" class="live-entry row dark-bg align-center">
+  <div class="eight columns">
+    <h3>Daft punk <span class="text-jet text-pink blue-text-shadow">-></span> Paris</h3>
+  </div>
+    <div class="two columns live-links">
+      <a class="button u-full-width" href="/merci.html?artist=Daft+punk&place=Paris&liveid=daft-punkparis&videoid=Hjqs8YIB7ys">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" width="1em" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+        </svg>
+        Voir
+      </a>
+    </div>
+    <div class="two columns live-count">
+      <button id="button-daft-punkparis"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('daft-punkparis'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="daft-punkparis"></span></i>
+</button>
+
+    </div>
+</div>
+
+
+  
+  <script>getLiveHit('mparis');</script>
+<div id="link-mparis" class="live-entry row dark-bg align-center">
+  <div class="eight columns">
+    <h3>M <span class="text-jet text-pink blue-text-shadow">-></span> Paris</h3>
+  </div>
+    <div class="two columns live-links">
+      <a class="button u-full-width" href="/merci.html?artist=M&place=Paris&liveid=mparis&videoid=YkupybPWo0E">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" width="1em" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+        </svg>
+        Voir
+      </a>
+    </div>
+    <div class="two columns live-count">
+      <button id="button-mparis"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('mparis'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="mparis"></span></i>
+</button>
+
+    </div>
+</div>
+
+
+  
+  <script>getLiveHit('feu-chattertonlyon');</script>
+<div id="link-feu-chattertonlyon" class="live-entry row dark-bg align-center">
+  <div class="eight columns">
+    <h3>Feu Chatterton <span class="text-jet text-pink blue-text-shadow">-></span> Lyon</h3>
+  </div>
+    <div class="two columns live-links">
+      <a class="button u-full-width" href="/merci.html?artist=Feu+Chatterton&place=Lyon&liveid=feu-chattertonlyon&videoid=8Q7l-lvRB6w">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="currentColor" width="1em" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+        </svg>
+        Voir
+      </a>
+    </div>
+    <div class="two columns live-count">
+      <button id="button-feu-chattertonlyon"
+        class="button button-secondary u-full-width"
+        title="+1"
+        onclick="javascript:hitLiveHit('feu-chattertonlyon'); return true;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
+    <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
+  </svg>
+  <i><span id="feu-chattertonlyon"></span></i>
+</button>
+
+    </div>
+</div>
+
+
+
+    </div>
+    <p class="text-center">
+      <a class="button older" href="/tous.html">Tous les lives proposés</a>
+    </p>
+    <footer>
+  <div class="row">
+    <div class="six columns menu-footer">
+      <ul class="no-style">
+        <li>Un site <a href="https://half.re">Half revolution</a></li>
+        <li>Hébergé sur <a href="https://www.netlify.com">Netlify</a></li>
+      </ul>
+    </div>
+    <div class="six columns menu-footer left">
+      <ul class="no-style">
+        <li>Licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr">CC&nbsp;by-sa&nbsp;4.0</a></li>
+        <li>Photos par <a href="https://pixabay.com/fr/users/stocksnap-894430/">StockSnap</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>

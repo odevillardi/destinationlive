@@ -1,0 +1,106 @@
+@mixin color($light-color, $dark-color) {
+  color: $light-color;
+  @media (prefers-color-scheme: dark) {
+    color: $dark-color;
+  }
+}
+
+@mixin fill($light-color, $dark-color) {
+  fill: $light-color;
+  @media (prefers-color-scheme: dark) {
+    fill: $dark-color;
+  }
+}
+
+@mixin background-color($light-color, $dark-color) {
+  background-color: $light-color;
+  @media (prefers-color-scheme: dark) {
+    background-color: $dark-color;
+  }
+}
+
+@mixin border-color($light-color, $dark-color) {
+  border-color: $light-color;
+  @media (prefers-color-scheme: dark) {
+    border-color: $dark-color;
+  }
+}
+
+@mixin box-shadow($rule) {
+  -webkit-box-shadow: $rule;
+          box-shadow: $rule;
+}
+
+@mixin fill($light-color, $dark-color) {
+  fill: $light-color;
+  @media (prefers-color-scheme: dark) {
+    fill: $dark-color;
+  }
+}
+
+@mixin font-kerning($value){
+  -webkit-font-kerning: $value;
+     -moz-font-kerning: $value;
+          font-kerning: $value;
+}
+
+@mixin font-smoothing($value){
+  -moz-osx-font-smoothing: $value;
+   -webkit-font-smoothing: $value;
+           font-smoothing: $value;
+}
+
+@mixin font-variant-ligatures($value) {
+  -webkit-font-variant-ligatures: $value;
+     -moz-font-variant-ligatures: $value;
+          font-variant-ligatures: $value;
+}
+
+@mixin text-overflow($value) {
+    -o-text-overflow: $value;
+       text-overflow: $value;
+}
+
+@mixin columns($number) {
+  -webkit-columns: $number;
+     -moz-columns: $number;
+          columns: $number;
+}
+
+@mixin column-gap($gap) {
+  -webkit-column-gap: $gap;
+     -moz-column-gap: $gap;
+          column-gap: $gap;
+}
+
+@mixin column-rule($rule) {
+-webkit-column-rule: 1px solid $rule;
+   -moz-column-rule: 1px solid $rule;
+        column-rule: 1px solid $rule;
+}
+
+@mixin object-fit($rule) {
+  -webkit-object-fit: $rule;
+       -o-object-fit: $rule;
+          object-fit: $rule;
+}
+
+@mixin rotate($angle) {
+        transform: rotate($angle);
+-webkit-transform: rotate($angle);
+   -moz-transform: rotate($angle);
+    -ms-transform: rotate($angle);
+     -o-transform: rotate($angle);
+}
+
+@mixin position($rule) {
+  position: -webkit-$rule;
+  position:         $rule;
+}
+
+@mixin transition($transition, $duration, $type) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    -webkit-transition: $transition $duration $type;
+            transition: $transition $duration $type;
+  }
+}

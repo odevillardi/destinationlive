@@ -1,0 +1,11 @@
+{
+  "name": "Destinationlive",
+  "version": "1.0.0",
+  "description": "Destinationlive",
+  "author": "Olivier de Villardi",
+  "dependencies": {
+    "form-data": "^4.0.0",
+    "node-fetch": "^2.6.1",
+    "axios": "^0.21.1"
+  }
+}

@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="fr-fr">
+  {% include head.html %}
+  <body class="container">
+    {% include header.html %}
+    {{ page.content | markdownify }}
+    {% include footer.html %}
+  </body>
+</html>

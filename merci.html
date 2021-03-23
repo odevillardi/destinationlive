@@ -1,0 +1,31 @@
+---
+title: Merci pour cette suggestion de live • Destination->live
+noindex: oui
+---
+<!DOCTYPE html>
+<html lang="fr-fr">
+  {% include head.html %}
+  <body class="merci container" onload="javascript:getArtist();fillButtonHit();">
+    {% include header.html %}
+    <div class="hero">
+      <div class="row align-center">
+        <div class="eight columns">
+          <h2><em><span id="artist"></span> <span class="text-jet text-pink">-></span> <span id="place"></span></em></h2>
+        </div>
+        <div class="four columns">
+          {% include hit-button.html live-id = "live-id" %}
+        </div>
+      </div>
+      <p>En attendant de voir ce live, voici une petite vidéo pour patienter.</p>
+    </div>
+    <div id="videoContainer" class="video-container"></div>
+    <p class="text-center">
+      <a class="button" href="/tous.html">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
+          <path d="M0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zM2 3a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11A.5.5 0 0 0 2 3zm2-2a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7A.5.5 0 0 0 4 1z"/>
+        </svg>
+        Voir les lives proposés</a>
+    </p>
+    {% include footer.html %}
+  </body>
+</html>

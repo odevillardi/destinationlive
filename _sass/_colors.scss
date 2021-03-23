@@ -1,0 +1,19 @@
+$dark-color:        #001326;
+$dark-color-transparent:    #001326AA;
+$light-color:       #FFFFFF;
+$pink-color:        #FF19D9;
+$dark-pink-color:   #400636;
+$blue-color:        #0080FF;
+$light-blue-color:  #D9ECFF;
+
+%blue-text-shadow {  text-shadow: .2rem .35rem 0 $blue-color; }
+%blue-box-shadow {    box-shadow: .2rem .35rem 0 $blue-color; }
+%pink-text-shadow {  text-shadow: .2rem .35rem 0 $pink-color; }
+%pink-box-shadow {    box-shadow: .2rem .35rem 0 $pink-color; }
+%light-text-shadow {  text-shadow: .2rem .35rem 0 $light-blue-color; }
+%light-box-shadow {    box-shadow: .2rem .35rem 0 $light-blue-color; }
+%dark-text-shadow {  text-shadow: .2rem .35rem 0 $dark-color; }
+%dark-box-shadow {    box-shadow: .2rem .35rem 0 $dark-color; }
+
+.dark-bg { background-color: $dark-color; }
+.trans-dark-bg { background-color: $dark-color-transparent; }

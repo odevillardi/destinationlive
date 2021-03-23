@@ -1,0 +1,16 @@
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: $blue-color;
+  &:hover {
+    color: $pink-color;
+    text-decoration: none;
+  }
+}
+
+.newer::before { content: "‹ "; }
+.contact::before { content: "› "; }
+.older::after  { content: " ›"; }
+.more::before { content: "+ "; }
+
+.menu a { text-decoration: none; }

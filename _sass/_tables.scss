@@ -1,0 +1,40 @@
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+tr {
+  border-bottom: 1px solid $blue-color;
+}
+
+td, th { padding: 2rem; }
+
+th {
+  vertical-align: bottom;
+  input { font-weight: 400; }
+}
+
+th:first-child,
+td:first-child {
+  padding-left: 2rem; }
+th:last-child,
+td:last-child {
+  padding-right: 2rem; }
+
+@media (min-width: $breakpoint-m) {
+  th:first-child,
+  td:first-child {
+    padding-left: 5rem; }
+  th:last-child,
+  td:last-child {
+    padding-right: 5rem; }
+}
+
+.responsive-table {
+  overflow-x:auto;
+}
+
+.th-sort {
+  cursor: pointer;
+  color: $blue-color;
+  &:hover, &.active {
+    color: $pink-color;
+  }
+}

@@ -1,0 +1,50 @@
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside;
+}
+
+ol {
+  list-style: decimal inside;
+}
+
+ol, ul {
+  padding-left: 0;
+  margin-top: 0;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%;
+}
+
+li {
+  margin-bottom: 1rem; }
+
+  .list-inline {
+    margin-left: 0;
+    padding-left: 0;
+
+    li { display: inline; }
+    li:not(:first-child) {
+      margin-left: 2rem;
+    }
+    @media (max-width: $breakpoint-m-1) {
+      li.item-break {
+        margin-left: 0;
+        &::before {
+          display: block;
+          content: "\a";
+        }
+      }
+    }
+  }
+
+  .no-style {
+    margin-left: 0;
+    padding-left: 0;
+    li { list-style: none; }
+  }

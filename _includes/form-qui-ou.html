@@ -1,0 +1,36 @@
+<div class="live-form dark-bg">
+  <form id="liveform"
+      name="qui-ou"
+      action="/merci.html?artist="
+      method="POST"
+      netlify-honeypot="bot-field"
+      data-netlify="true">
+    <input id="live-id" type="hidden" name="live-id">
+    <input id="video-id" type="hidden" name="video-id">
+    <label class="hidden">Ne pas remplir ce champ<input name="bot-field"></label>
+    <div class="row">
+      <div class="six columns">
+        <label class="title title-h3" for="qui">Tu veux voir qui ?</label>
+        <input  class="u-full-width"
+                id="qui" type="text"
+                name="qui"
+                placeholder="Artiste, groupe, humoriste…"
+                oninput="javascript:putArtist()"
+                onblur="javascript:fillVideoId()"
+                required>
+      </div>
+      <div class="four columns">
+        <label class="title title-h3" for="ou">Où ?</label>
+        <input  class="u-full-width"
+                id="ou" type="text"
+                name="ou"
+                placeholder="Ville, festival…"
+                oninput="javascript:putArtist()" required>
+      </div>
+      <div class="two columns">
+        <label class="title title-h3">Go</label>
+        <button class="button button-primary u-full-width" type="submit">-></button>
+      </div>
+    </div>
+  </form>
+</div>
