@@ -1,5 +1,5 @@
-var FormData = require('form-data');
-const fetch = require('node-fetch');
+// var FormData = require('form-data');
+// const fetch = require('node-fetch');
 const querystring = require("querystring");
 const axios = require('axios');
 
@@ -13,22 +13,23 @@ exports.handler = async (event, context) => {
   // const lieu = params.ou;
   // const formPayload = params.payload;
 
-  const token = process.env.GITLAB_TOKEN;
+  const token = process.env.GITHUB_TOKEN;
   var date = new Date();
   date = date.toISOString();
 
-  const url = `https://gitlab.com/api/v4/projects/24861509/repository/files/_data%2every-live%2live.json?access_token=${token}`;
+  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_data/every-live/live-${date}.json`;
 
-  var data = new FormData();
-  data.append("branch", "master");
-  data.append("commit_message", "Test depuis netlify function");
-  data.append("content", "Test");
+  var data = "{\"branch\":\"main\",\"message\":\"test depuis postman\",\"content\":\"dGVzdA==\"}";
 
   var config = {
-    method: 'post',
+    method: 'PUT',
     url: url,
-    headers: {"Content-Type": "application/json"},
-    data : data
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization', 'token'+token,
+      'Content-Type': 'text/plain'
+    },
+    data: data
   };
 
   await axios(config)
