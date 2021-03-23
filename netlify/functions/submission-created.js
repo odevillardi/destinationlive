@@ -15,7 +15,7 @@ exports.handler = async (event, context) => {
   var qui = formPayload.data.qui;
   var ou = formPayload.data.ou;
   var ip = formPayload.data.ip;
-  var created_at = formPayload.data.created_at;
+  var created_at = formPayload.created_at;
 
   // formPayload = btoa(JSON.stringify(formPayload));
   // console.log(formPayload);
