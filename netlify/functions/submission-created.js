@@ -12,7 +12,9 @@ exports.handler = async (event, context) => {
 
   console.log(formPayload);
 
-  btoa(formPayload);
+  const content = btoa(formPayload);
+
+  console.log(content);
 
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
@@ -20,7 +22,7 @@ exports.handler = async (event, context) => {
 
   const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_data/every-live/live-${date}.json`;
 
-  var data = "{\"branch\":\"main\",\"message\":\"test depuis postman\",\"content\":formPayload}";
+  var data = "{\"branch\":\"main\",\"message\":\"test depuis postman\",\"content\":content}";
 
   var config = {
     method: 'PUT',
