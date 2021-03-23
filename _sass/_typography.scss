@@ -114,10 +114,12 @@ h6, .title-h6 { font-size: 1.5rem; line-height: 1.5;  letter-spacing: 0; }
     &:hover { color: inherit; @extend %blue-text-shadow; }
   }
   span {
-    display: block;
-    &::after, &::before { color: $pink-color; }
-    &.logo-desti::after { content: "–"; @extend %blue-text-shadow; }
-    &.logo-live::before { content: "->"; @extend %blue-text-shadow; }
+    &::after, &::before { color: $pink-color; @extend %blue-text-shadow; }
+    &.logo-live::before { content: "->"; } 
+    @media (max-width: $breakpoint-m-1) {
+      display: block;
+      &.logo-desti::after { content: "–"; }
+    }
   }
 }
 
