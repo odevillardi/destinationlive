@@ -8,7 +8,10 @@ exports.handler = async (event, context) => {
   }
 
   const params = querystring.parse(event.body);
-  const formPayload = btoa(params.payload);
+  const formPayload = JSON.stringify(params.payload);
+  formPayload = btoa(formPayload);
+
+  console.log(formPayload);
 
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
