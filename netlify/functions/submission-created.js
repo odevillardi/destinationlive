@@ -9,15 +9,20 @@ exports.handler = async (event, context) => {
 
   var formPayload = JSON.parse(event.body).payload;
 
-  // var nb = btoa(formPayload.number);
-  // var live-id = btoa(formPayload.data.live-id);
+  var nb = formPayload.number;
+  var liveid = formPayload.data.live-id;
+  var videoid = formPayload.data.video-id;
+  var qui = formPayload.data.qui;
+  var ou = formPayload.data.ou;
+  var ip = formPayload.data.ip;
+  var created_at = formPayload.data.created_at;
 
   // formPayload = btoa(JSON.stringify(formPayload));
   // console.log(formPayload);
 
   // var content = "eyJudW1iZXIiOiAiMSJ9";
 
-  var file = '{"number": "1"}';
+  var file = '{"number": "'+nb+'","data":{"live-id":"'+liveid+'","video-id":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
   var content = btoa(file);
 
