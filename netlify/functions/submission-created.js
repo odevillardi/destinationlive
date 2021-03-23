@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
 
   const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_data/every-live/live-${date}.json`;
 
-  var data = "{\"branch\":\"main\",\"message\":\"test depuis postman\",\"content\":\""+formPayload+"\"}";
+  var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+formPayload+"\"}";
 
   var config = {
     method: 'PUT',
