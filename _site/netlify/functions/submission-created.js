@@ -17,14 +17,7 @@ exports.handler = async (event, context) => {
   var ip = formPayload.data.ip;
   var created_at = formPayload.created_at;
 
-  // formPayload = btoa(JSON.stringify(formPayload));
-  // console.log(formPayload);
-
-  // var content = "eyJudW1iZXIiOiAiMSJ9";
-
   var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
-
-  // var file = '{"number":"'+nb+'","data":{},"created_at":"'+created_at+'"}';
 
   var content = btoa(file);
 
