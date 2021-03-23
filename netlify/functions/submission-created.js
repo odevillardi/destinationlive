@@ -12,8 +12,8 @@ exports.handler = async (event, context) => {
   var nb = formPayload.number;
   var liveid = formPayload.data.liveid;
   var videoid = formPayload.data.videoid;
-  var qui = formPayload.data.qui;
-  var ou = formPayload.data.ou;
+  var qui = encodeURI(formPayload.data.qui);
+  var ou = encodeURI(formPayload.data.ou);
   var ip = formPayload.data.ip;
   var created_at = formPayload.created_at;
 
