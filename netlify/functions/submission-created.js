@@ -22,7 +22,9 @@ exports.handler = async (event, context) => {
 
   // var content = "eyJudW1iZXIiOiAiMSJ9";
 
-  var file = '{"number": "'+nb+'","data":{"live-id":"'+liveid+'","video-id":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
+  // var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
+
+  var file = '{"number": "'+nb+'"}';
 
   var content = btoa(file);
 
