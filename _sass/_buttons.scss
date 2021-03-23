@@ -36,6 +36,7 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   &:not(:disabled) {
+    background-color: #fff;
     color: $pink-color;
     outline: 0;
     @extend %pink-box-shadow;
