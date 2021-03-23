@@ -17,7 +17,9 @@ exports.handler = async (event, context) => {
 
   // var content = "eyJudW1iZXIiOiAiMSJ9";
 
-  var content = btoa('{"number": "1"}');
+  var file = '{"number": "1"}';
+
+  var content = btoa(file);
 
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
