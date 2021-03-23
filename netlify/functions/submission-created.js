@@ -10,8 +10,8 @@ exports.handler = async (event, context) => {
   var formPayload = JSON.parse(event.body).payload;
 
   var nb = formPayload.number;
-  var liveid = formPayload.data.live_id;
-  var videoid = formPayload.data.video_id;
+  var liveid = formPayload.data.liveid;
+  var videoid = formPayload.data.videoid;
   var qui = formPayload.data.qui;
   var ou = formPayload.data.ou;
   var ip = formPayload.data.ip;
@@ -22,9 +22,9 @@ exports.handler = async (event, context) => {
 
   // var content = "eyJudW1iZXIiOiAiMSJ9";
 
-  // var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
+  var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
-  var file = '{"number":"'+nb+'","created_at":"'+created_at+'"}';
+  // var file = '{"number":"'+nb+'","data":{},"created_at":"'+created_at+'"}';
 
   var content = btoa(file);
 
