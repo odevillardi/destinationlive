@@ -24,7 +24,7 @@ exports.handler = async (event, context) => {
 
   // var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
-  var file = '{"number": "'+nb+'","created_at":"'+created_at+'"}';
+  var file = '{"number":"'+nb+'","created_at":"'+created_at+'"}';
 
   var content = btoa(file);
 
