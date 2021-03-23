@@ -21,8 +21,8 @@
     var place = document.querySelector("#ou").value.trim();
     var liveid = artist.toLowerCase()+place.toLowerCase();
     liveid = liveid.replace(/[^A-Z0-9]+/ig, "-");
-    document.getElementById("live-id").value = liveid;
-    var videoid = document.getElementById("video-id").value;
+    document.getElementById("liveid").value = liveid;
+    var videoid = document.getElementById("videoid").value;
     document.querySelector("#liveform").action = "/merci.html?artist="+encodeURI(artist)+"&place="+encodeURI(place)+"&liveid="+liveid+"&hit=1&videoid="+videoid;
   }
 
@@ -56,8 +56,8 @@
     const queryString = window.location.search ;
     const urlParams = new URLSearchParams(queryString) ;
     var liveid = urlParams.get("liveid") ;
-    document.querySelector("#button-live-id").id = "button-"+liveid ;
-    document.querySelector("#live-id").id = liveid ;
+    document.querySelector("#button-liveid").id = "button-"+liveid ;
+    document.querySelector("#liveid").id = liveid ;
     getLiveHit(liveid) ;
     document.querySelector("#button-"+liveid).setAttribute("onClick", "javascript:hitLiveHit('"+liveid+"'); return true;") ;
   }
@@ -98,7 +98,7 @@
           putVideo(idVideo);
         }
         else {
-          document.getElementById("video-id").value = idVideo;
+          document.getElementById("videoid").value = idVideo;
         }
       })
       .catch(error => console.log('error', error));
