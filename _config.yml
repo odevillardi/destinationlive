@@ -26,4 +26,4 @@ exclude: ["README.md"]
 
 #scss
 sass:
-    style: compressed
+  style: compressed
