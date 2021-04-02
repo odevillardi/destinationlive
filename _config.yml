@@ -14,8 +14,8 @@ layouts_dir:     ./_layouts
 data_dir: ./_data
 collections: null
 
-title: "Destination->live"
-description: "Quel artiste, groupe, humoriste… tu veux voir ? Fais-le venir près de chez toi !"
+title: "Destination live"
+description: "Tu veux voir qui en live ? Fais-le venir près de chez toi !"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://destinationlive.net" # the base hostname & protocol for your site
 
