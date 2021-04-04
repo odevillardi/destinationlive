@@ -36,10 +36,10 @@ input[type="submit"]:focus,
 input[type="reset"]:focus,
 input[type="button"]:focus {
   &:not(:disabled) {
-    background-color: #fff;
-    color: $pink-color;
+    background-color: $blue-color;
+    color: $light-blue-color;
     outline: 0;
-    @extend %pink-box-shadow;
+    @extend %light-box-shadow;
   }
 }
 
@@ -88,7 +88,7 @@ input[type="submit"].button-secondary:hover,
 input[type="reset"].button-secondary:hover,
 input[type="button"].button-secondary:hover {
   &:not(:disabled) {
-    color: $blue-color;
-    @extend %blue-box-shadow;
+    background-color: $pink-color;
+    @extend %light-box-shadow;
   }
 }
