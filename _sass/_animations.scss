@@ -1,0 +1,13 @@
+@keyframes glitchtext {
+  0%  { text-shadow: .2rem .35rem 0 $blue-color; }
+  25% { text-shadow: .2rem -.35rem 0 $pink-color; }
+  50% { text-shadow: -.2rem .35rem 0 $blue-color; }
+  75% { text-shadow: -.2rem -.35rem 0 $pink-color; }
+}
+
+@keyframes glitchtextinverse {
+  0%  { text-shadow: .2rem .35rem 0 $pink-color; }
+  25% { text-shadow: .2rem -.35rem 0 $blue-color; }
+  50% { text-shadow: -.2rem .35rem 0 $pink-color; }
+  75% { text-shadow: -.2rem -.35rem 0 $blue-color; }
+}
