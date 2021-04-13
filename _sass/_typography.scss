@@ -4,7 +4,7 @@
   font-family: 'JetBrains Mono';
   font-style: italic;
   font-weight: 800;
-  font-display: swap;
+  font-display: auto;
   src: local('JetBrains Mono Italic'), local('JetBrainsMonoItalic-ExtraBold'), url('./JetBrainsMonoBoldItalic.woff') format('woff');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -13,7 +13,7 @@
   font-family: 'Roboto Condensed';
   font-style: normal;
   font-weight: 400;
-  font-display: swap;
+  font-display: auto;
   src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url('./RobotoCondensed.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -22,7 +22,7 @@
   font-family: 'Roboto Condensed';
   font-style: italic;
   font-weight: 400;
-  font-display: swap;
+  font-display: auto;
   src: local('Roboto Condensed Italic'), local('RobotoCondensed-Italic'), url('./RobotoCondensedItalic.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -31,7 +31,7 @@
   font-family: 'Roboto Condensed';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: auto;
   src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('./RobotoCondensedBold.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -40,7 +40,7 @@
   font-family: 'Roboto Condensed';
   font-style: italic;
   font-weight: 700;
-  font-display: swap;
+  font-display: auto;
   src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url('./RobotoCondensedBoldItalic.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -48,7 +48,12 @@
 $main-family: "Roboto Condensed", "Arial Narrow", sans-serif;
 $secondary-family: "JetBrains Mono", Courier, "Courier New", monospace;
 
-html { font-size: 62.5%; }
+html {
+  font-size: 62.5%;
+  @include font-variant-ligatures("normal, discretionary-ligatures, historical-ligatures, contextual");
+  font-feature-settings: "kern" 1, "liga" 1, "swsh" 1;
+  text-rendering : optimizeLegibility;
+}
 
 body {
   font-size: 2em;
@@ -66,7 +71,8 @@ body {
 .text-capitalize  { text-transform: capitalize; }
 .text-uppercase   { text-transform: uppercase; }
 .text-jet         { font-family: $secondary-family; }
-.text-pink        { color: $pink-color; @extend %blue-text-shadow; }
+.text-pink        { color: $pink-color; }
+.pink-text-shadow { @extend %pink-text-shadow; }
 
 h1, h2, h3, h4, h5, h6, .title {
   margin-top: 2rem;
