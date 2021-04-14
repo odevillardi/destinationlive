@@ -37,6 +37,7 @@ input[type="reset"]:focus,
 input[type="button"]:focus {
   &:not(:disabled) {
     background-color: $blue-color;
+    background: linear-gradient(-30deg, $pink-color, $blue-color 67%);
     color: $light-blue-color;
     outline: 0;
     @extend %light-box-shadow;
@@ -67,9 +68,11 @@ input[type="reset"].button-primary:focus,
 input[type="button"].button-primary:focus {
   &:not(:disabled) {
     color: $light-color;
+    background: none;
     background-color: $blue-color;
     @extend %pink-box-shadow;
     @extend %pink-text-shadow;
+    animation: glitchbox .25s ease reverse both infinite;
   }
 }
 
@@ -89,6 +92,7 @@ input[type="reset"].button-secondary:hover,
 input[type="button"].button-secondary:hover {
   &:not(:disabled) {
     background-color: $pink-color;
+    background: linear-gradient(-30deg, $blue-color, $pink-color 67%);
     @extend %light-box-shadow;
   }
 }
