@@ -8,12 +8,12 @@ input[type="button"] {
   @extend %blue-box-shadow;
   display: inline-block;
   padding: 0 2rem;
-  font-style: italic;
-  font-weight: 900;
   background-color: $light-blue-color;
   color: $blue-color;
   text-align: center;
+  font-weight: 700;
   line-height: 38px;
+  font-style: italic;
   text-decoration: none;
   white-space: nowrap;
   border: none;
@@ -53,7 +53,9 @@ input[type="button"].button-primary {
   font-family: $secondary-family;
   color: $light-color;
   background-color: $pink-color;
-  @extend %blue-text-shadow;
+  font-size: 1.4em;
+  font-weight: 900;
+  @extend %light-box-shadow;
 }
 
 .button.button-primary:hover,
@@ -69,7 +71,7 @@ input[type="button"].button-primary:focus {
   &:not(:disabled) {
     color: $light-color;
     background: none;
-    background-color: $blue-color;
+    background-color: $dark-pink-color;
     @extend %pink-box-shadow;
     @extend %pink-text-shadow;
     animation: glitchbox .25s ease reverse both infinite;
