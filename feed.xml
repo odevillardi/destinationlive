@@ -20,8 +20,8 @@ layout: null
           <noscript>Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ live.videoid }}">{{ page.qui | url_decode }} sur Youtube</a></noscript>
         </description>
         <pubDate>{{ live.created_at | date_to_rfc822 }}</pubDate>
-        <link>https://destinationlive.net/merci.html?artist={{ live.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.videoid | strip_html | strip_newlines | url_encode }}</link>
-        <guid isPermaLink="true">https://destinationlive.net/merci.html?artist={{ live.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.videoid | strip_html | strip_newlines | url_encode }}</guid>
+        <link>{{ live.url }}</link>
+        <guid isPermaLink="true">{{ live.url }}</guid>
       </item>
     {% endfor %}
   </channel>
