@@ -118,14 +118,13 @@ h6, .title-h6 { font-size: 1.5rem; line-height: 1.5;  letter-spacing: 0; }
   a {
     color: inherit;
     text-decoration: none;
-    @extend %blue-text-shadow;
+    @extend %dark-pink-text-shadow;
     &:hover {
       color: inherit;
-      @extend %pink-text-shadow; }
+      @extend %blue-text-shadow; }
   }
 
   span {
-    animation: glitchtext .25s ease reverse both;
     &::after,
     &::before {
       animation: glitchtextinverse .25s ease reverse both;
