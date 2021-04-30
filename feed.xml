@@ -11,9 +11,9 @@ layout: null
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     {% assign lives = site.lives | sort %}
-    {% for item in lives reversed %}
+    {% for live in lives reversed %}
       <item>
-        <title>{{ live.qui | url_decode | strip_html | strip_newlines }} -> {{ live.ou | url_decode | strip_html | strip_newlines }}</title>
+        <title>{{ live.qui | url_decode | strip_html | strip_newlines }} → {{ live.ou | url_decode | strip_html | strip_newlines }}</title>
         <description>Nouveau live proposé de {{ live.qui | url_decode | strip_html | strip_newlines }} à {{ live.ou | url_decode | strip_html | strip_newlines }}</description>
         <pubDate>{{ live.created_at | date_to_rfc822 }}</pubDate>
         <link>https://destinationlive.net/merci.html?artist={{ live.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.videoid | strip_html | strip_newlines | url_encode }}</link>
