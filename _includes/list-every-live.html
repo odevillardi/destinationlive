@@ -1,4 +1,4 @@
-{% assign lives = site.lives | sort %}
+{% assign lives = site.lives | sort: "qui" %}
 <div class="responsive-table">
   <table id="live-table" class="u-full-width">
     <tr class="text-center">
@@ -38,7 +38,7 @@
         </svg>
       </th>
     </tr>
-    {% for live in lives reversed %}
+    {% for live in lives | sort: "qui" %}
       {% include item-row.html %}
     {% endfor %}
   </table>
