@@ -19,16 +19,16 @@ exports.handler = async (event, context) => {
 
   var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
-  var filemd = '---\nnumber:'+nb+'\n---';
+  var filemd = '---\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'---';
   console.log(filemd);
 
-  var content = btoa(file);
+  var content = btoa(filemd);
 
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
   date = date.toISOString();
 
-  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_data/every-live/live-${date}.json`;
+  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_live/live-${date}.md`;
 
   var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+content+"\"}";
 
