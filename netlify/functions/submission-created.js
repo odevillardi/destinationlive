@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
 
   // var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
-  var filemd = '---\nlayout: live\ntitle: "'+qui+' → '+ou+'"\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'\npermalink: '+nb+'-'+liveid+'\n---';
+  var filemd = '---\nlayout: live\ntitle: "'+qui+' &rarr; '+ou+'"\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'\npermalink: '+nb+'-'+liveid+'\n---';
 
   var content = btoa(filemd);
 
