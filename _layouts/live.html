@@ -15,11 +15,11 @@
           {% include hit-button.html liveid = page.liveid %}
         </div>
       </div>
-      <p>En attendant de voir ce live, voici une petite vidéo pour patienter.</p>
+      <p>En attendant de voir <strong>{{ page.qui | url_decode }}</strong> à <strong>{{ page.ou | url_decode }}</strong>, voici une petite vidéo pour patienter.</p>
     </div>
     <div class="video-container">
       <iframe class="embed-responsive-16by9" src="https://www.youtube-nocookie.com/embed/{{ page.videoid }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <noscript>Une vidéo de votre live vous attend, si vous activez javascript…</noscript>
+      <noscript>Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ page.videoid }}">{{ page.qui | url_decode }} sur Youtube</a></noscript>
     </div>
     <p class="text-center">
       {% include tous-les-lives.html %}

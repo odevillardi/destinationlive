@@ -10,15 +10,14 @@ layout: null
     <atom:link href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" rel="self" type="application/rss+xml"/>
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    {% assign lives = site.data.every-live | sort %}
+    {% assign lives = site.lives | sort %}
     {% for item in lives reversed %}
-      {% assign live = item[1] %}
       <item>
-        <title>{{ live.data.qui | url_decode | strip_html | strip_newlines }} -> {{ live.data.ou | url_decode | strip_html | strip_newlines }}</title>
-        <description>Nouveau live proposé de {{ live.data.qui | url_decode | strip_html | strip_newlines }} à {{ live.data.ou | url_decode | strip_html | strip_newlines }}</description>
+        <title>{{ live.qui | url_decode | strip_html | strip_newlines }} -> {{ live.ou | url_decode | strip_html | strip_newlines }}</title>
+        <description>Nouveau live proposé de {{ live.qui | url_decode | strip_html | strip_newlines }} à {{ live.ou | url_decode | strip_html | strip_newlines }}</description>
         <pubDate>{{ live.created_at | date_to_rfc822 }}</pubDate>
-        <link>https://destinationlive.net/merci.html?artist={{ live.data.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.data.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.data.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.data.videoid | strip_html | strip_newlines | url_encode }}</link>
-        <guid isPermaLink="true">https://destinationlive.net/merci.html?artist={{ live.data.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.data.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.data.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.data.videoid | strip_html | strip_newlines | url_encode }}</guid>
+        <link>https://destinationlive.net/merci.html?artist={{ live.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.videoid | strip_html | strip_newlines | url_encode }}</link>
+        <guid isPermaLink="true">https://destinationlive.net/merci.html?artist={{ live.qui | strip_html | strip_newlines | url_encode }}&amp;place={{ live.ou | strip_html | strip_newlines | encode_url }}&amp;liveid={{ live.liveid | strip_html | strip_newlines | url_encode }}&amp;videoid={{ live.videoid | strip_html | strip_newlines | url_encode }}</guid>
       </item>
     {% endfor %}
   </channel>
