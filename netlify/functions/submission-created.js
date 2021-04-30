@@ -19,7 +19,7 @@ exports.handler = async (event, context) => {
 
   var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
-  var filemd = '---\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'---';
+  var filemd = '---\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'\n---';
   console.log(filemd);
 
   var content = btoa(filemd);
@@ -28,7 +28,7 @@ exports.handler = async (event, context) => {
   var date = new Date();
   date = date.toISOString();
 
-  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_live/live-${date}.md`;
+  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_lives/live-${date}.md`;
 
   var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+content+"\"}";
 
