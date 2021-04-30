@@ -27,3 +27,7 @@ exclude: ["README.md"]
 #scss
 sass:
   style: compressed
+
+collections:
+  lives:
+    output: true
