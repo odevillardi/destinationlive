@@ -26,10 +26,8 @@ exports.handler = async (event, context) => {
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
   date = date.toISOString();
-  year = date.getFullYear();
-  month = date.getMonth()+1;
 
-  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_lives/${year}/${month}/live-${date}.md`;
+  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_lives/live-${date}.md`;
 
   var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+content+"\"}";
 
