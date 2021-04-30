@@ -1,0 +1,29 @@
+---
+---
+<!DOCTYPE html>
+<html lang="fr-fr">
+  {% include head.html %}
+  <body class="merci container">
+    {% include header.html %}
+    <div class="hero">
+      <div class="row align-center">
+        <div class="eight columns">
+          <h1>{{ page.qui | url_decode }} <span class="text-jet pink-text-shadow">-></span> {{ page.ou | url_decode }}</h1>
+        </div>
+        <div class="four columns">
+          <script>getLiveHit('{{ page.liveid }}');</script>
+          {% include hit-button.html liveid = page.liveid %}
+        </div>
+      </div>
+      <p>En attendant de voir ce live, voici une petite vidéo pour patienter.</p>
+    </div>
+    <div class="video-container">
+      <iframe class="embed-responsive-16by9" src="https://www.youtube-nocookie.com/embed/{{ page.videoid }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <noscript>Une vidéo de votre live vous attend, si vous activez javascript…</noscript>
+    </div>
+    <p class="text-center">
+      {% include tous-les-lives.html %}
+    </p>
+    {% include footer.html %}
+  </body>
+</html>

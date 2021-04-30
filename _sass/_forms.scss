@@ -46,7 +46,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  @extend %blue-box-shadow;
+  border: 1px dashed $pink-color;
   outline: 0;
 }
 

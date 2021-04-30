@@ -1,7 +1,15 @@
 <header class="text-center">
-  <h1 class="logo">
+  {%- if page.index -%}
+    <h1 class="logo">
+  {% else %}
+    <p class="title title-h1 logo">
+  {% endif %}
     <a href="/">
       <span class="logo-desti">Desti</span><span class="logo-nation">nation</span><span class="logo-live">live</span>
     </a>
-  </h1>
+  {%- if page.index -%}
+    </h1>
+  {% else %}
+    </p>
+  {% endif %}
 </header>

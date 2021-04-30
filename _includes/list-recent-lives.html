@@ -1,8 +1,7 @@
-{% assign lives = site.data.every-live | sort %}
-{% assign livesNb = site.data.every-live | size %}
+{% assign lives = site.lives | sort %}
+{% assign livesNb = site.lives | size %}
 {% assign nbdisplayed = 20 %}
 {% assign offset = livesNb | minus: nbdisplayed %}
-{% for item in lives reversed offset:offset %}
-  {% assign live = item[1] %}
+{% for live in lives reversed offset:offset %}
   {% include item-list.html %}
 {% endfor %}
