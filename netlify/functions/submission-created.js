@@ -19,6 +19,9 @@ exports.handler = async (event, context) => {
 
   var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
+  var filemd = '---\nnumber:'+nb+'\n---';
+  console.log(filemd);
+
   var content = btoa(file);
 
   const token = process.env.GITHUB_TOKEN;
