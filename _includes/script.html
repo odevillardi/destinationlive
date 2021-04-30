@@ -2,7 +2,7 @@
   function putArtist() {
     var artist = document.querySelector("#qui").value.trim();
     var place = document.querySelector("#ou").value.trim();
-    var liveid = artist.toLowerCase()+place.toLowerCase();
+    var liveid = artist.toLowerCase()+'-'+place.toLowerCase();
     liveid = liveid.replace(/[^A-Z0-9]+/ig, "-");
     document.getElementById("liveid").value = liveid;
     var videoid = document.getElementById("videoid").value;
