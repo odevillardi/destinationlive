@@ -17,19 +17,19 @@ exports.handler = async (event, context) => {
   var ip = formPayload.data.ip;
   var created_at = formPayload.created_at;
 
-  var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
+  // var file = '{"number": "'+nb+'","data":{"liveid":"'+liveid+'","videoid":"'+videoid+'","qui":"'+qui+'","ou":"'+ou+'","ip":"'+ip+'"},"created_at":"'+created_at+'"}';
 
   var filemd = '---\nlayout: live\ntitle: "'+qui+' -> '+ou+'"\nnumber: '+nb+'\nliveid: '+liveid+'\nvideoid: '+videoid+'\nqui: '+qui+'\nou: '+ou+'\nip: '+ip+'\ncreated_at: '+created_at+'\npermalink: '+nb+'-'+liveid+'\n---';
-
-  // console.log(filemd);
 
   var content = btoa(filemd);
 
   const token = process.env.GITHUB_TOKEN;
   var date = new Date();
   date = date.toISOString();
+  year = date.getFullYear();
+  month = date.getMonth()+1;
 
-  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_lives/live-${date}.md`;
+  const url = `https://api.github.com/repos/odevillardi/destinationlive/contents/_lives/${year}/${month}/live-${date}.md`;
 
   var data = "{\"branch\":\"main\",\"message\":\"New live\",\"content\":\""+content+"\"}";
 
