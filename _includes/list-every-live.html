@@ -1,47 +1,6 @@
 {% assign lives = site.lives | sort: "qui" %}
-<div class="responsive-table">
-  <table id="live-table" class="u-full-width">
-    <tr class="text-center">
-      <th class="th-qui">
-        <span class="th-sort" onclick="w3.sortHTML('#live-table','.item', 'td:nth-child(1)')">
-          Qui
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
-          </svg>
-        </span>
-        <br>
-        <input  class="icon-input search-input u-full-width"
-                oninput="w3.filterHTML('#live-table', '.td-qui', this.value)"
-                type="text"
-                placeholder="Chercher…"
-                required>
-      </th>
-      <th class="th-ou">
-        <span class="th-sort" onclick="w3.sortHTML('#live-table','.item', 'td:nth-child(2)')">
-          Où
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
-          </svg>
-        </span>
-        <br>
-        <input  class="icon-input search-input u-full-width"
-                oninput="w3.filterHTML('#live-table', '.td-ou', this.value)"
-                type="text"
-                placeholder="Chercher…"
-                required>
-      </th>
-      <th></th>
-      <th class="th-sort" onclick="w3.sortHTML('#live-table','.item', 'td:nth-child(4)', '1')">
-        <svg aria-label="Nombre de cœurs" xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" fill="currentColor" viewBox="0 0 16 16">
-          <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"/>
-        </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="1em" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
-        </svg>
-      </th>
-    </tr>
-    {% for live in lives | sort: "qui" %}
-      {% include item-row.html %}
-    {% endfor %}
-  </table>
+<div id="live-table" class="part">
+  {% for live in lives | sort: "qui" %}
+    {% include item-list.html %}
+  {% endfor %}
 </div>
