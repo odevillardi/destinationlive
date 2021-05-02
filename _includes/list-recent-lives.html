@@ -1,6 +1,6 @@
 {% assign lives = site.lives | sort %}
 {% assign livesNb = site.lives | size %}
-{% assign nbdisplayed = 20 %}
+{% assign nbdisplayed = 10 %}
 {% assign offset = livesNb | minus: nbdisplayed %}
 {% for live in lives reversed offset:offset %}
   {% include item-list.html %}
