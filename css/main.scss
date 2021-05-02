@@ -107,6 +107,15 @@ footer {
   }
 }
 
+@media (max-width: $breakpoint-m-1) {
+  .live-buttons {
+    display: inline;
+    width: 48%;
+    &.live-links { margin-left: 0; }
+    &.live-count { margin-left: 4%; }
+  }
+}
+
 .menu-footer {
   @media (min-width: $breakpoint-m) {
     text-align: right;
