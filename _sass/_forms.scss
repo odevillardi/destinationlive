@@ -10,8 +10,8 @@ input[type="password"],
 textarea,
 select {
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
-  background-color: $very-dark-color;
-  color: $light-color;
+  background-color: $light-color;
+  color: $dark-color;
   border: 1px solid darkgray;
   border-radius: 0;
   box-sizing: border-box;
@@ -46,8 +46,8 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border-color: $light-color;
-  outline: 1px solid $light-color;
+  border: 1px solid $pink-color;
+  outline: none;
 }
 
 input[type="email"]:valid,
@@ -59,8 +59,7 @@ input[type="url"]:valid,
 input[type="password"]:valid,
 textarea:valid,
 select:valid {
-  border-color: $light-color;
-  outline: 1px solid $light-color;
+  border: 1px solid $pink-color;
 }
 
 
