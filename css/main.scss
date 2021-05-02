@@ -89,7 +89,7 @@ footer {
 
 .live-entry {
   margin: 3rem 0;
-  padding: 2rem;
+  padding: 0 2rem 1rem;
   @media (min-width: $breakpoint-m) {
     padding: 3rem 5rem;
     h3, .button { margin: 0; }
