@@ -11,8 +11,7 @@
 
   function fillVideoId() {
     var artist = encodeURI(document.querySelector("#qui").value);
-    var place = encodeURI(document.querySelector("#ou").value);
-    getVideo(artist,place);
+    getVideo(artist);
   }
 
   function getLiveHit(liveID) {
@@ -60,20 +59,20 @@
         putVideo(videoID);
       }
       else {
-        getVideo(artist,place,1);
+        getVideo(artist,1);
       }
     }
     if (place) { document.querySelector("#place").innerHTML = place; }
     if (hit) { hitLiveHit(liveid); }
   }
 
-  function getVideo(artist, place, option) {
+  function getVideo(artist, option) {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
 
-    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+artist+"+live"+place+"&key=AIzaSyBPMPhoveG3cplA2VeHdYGkVb8e9KUaOQU", requestOptions)
+    fetch("https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q="+artist+"+live&key=AIzaSyBPMPhoveG3cplA2VeHdYGkVb8e9KUaOQU", requestOptions)
       .then(response => response.text())
       .then(data => {
         var json = JSON.parse(data);
