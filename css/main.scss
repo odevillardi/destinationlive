@@ -95,14 +95,15 @@ footer {
     h3, .button { margin: 0; }
   }
   &:first-of-type { margin-top: 0; }
+}
 
-  .live-links {
-    text-align: center;
-    margin-bottom: 1rem;
-    @media (min-width: $breakpoint-m) {
-      text-align: right;
-      margin-bottom: 0;
-    }
+.live-entry .live-links,
+.hero .live-count {
+  text-align: center;
+  margin-bottom: 1rem;
+  @media (min-width: $breakpoint-m) {
+    text-align: right;
+    margin-bottom: 0;
   }
 }
 
