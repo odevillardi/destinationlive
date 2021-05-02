@@ -54,36 +54,37 @@ body {
 }
 
 header,
-footer,
-.part,
-.menu,
-.live-entries,
-.video-container {
-  margin: 3rem 0;
+footer {
+  margin: 2rem 0;
   @media (min-width: $breakpoint-m) {
-    margin: 5rem 0 ;
+    margin: 4rem 0;
+  }
+}
+
+.part {
+  margin: 4rem 0 8rem;
+  @media (min-width: $breakpoint-m) {
+    margin: 8rem 0 12rem;
   }
 }
 
 .hero {
   padding: 1rem 2rem;
+  margin-bottom: 6rem;
   @media (min-width: $breakpoint-m) {
     padding: 1rem 5rem;
+    margin-bottom: 10rem;
   }
   p { margin-bottom: 0; }
-  ul { margin-top: 2rem; }
-}
+  ul { margin: 2rem auto 0; }
 
-.live-form, .part {
-  padding: 2rem;
-  @media (min-width: $breakpoint-m) {
-    padding: 3rem 5rem;
-  }
 }
 
 .live-form {
-  margin-bottom: 9rem;
-  padding-bottom: 1rem;
+  padding: 2rem 2rem 1rem;
+  @media (min-width: $breakpoint-m) {
+    padding: 3rem 5rem 1rem;
+  }
 }
 
 .live-entry {
