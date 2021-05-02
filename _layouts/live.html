@@ -21,9 +21,11 @@
       <iframe class="embed-responsive-16by9" src="https://www.youtube-nocookie.com/embed/{{ page.videoid }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <noscript>Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ page.videoid }}">{{ page.qui | url_decode }} sur Youtube</a></noscript>
     </div>
-    <p class="text-center">
-      {% include tous-les-lives.html %}
-    </p>
+    <div class="part">
+      <p class="text-center">
+        {% include tous-les-lives.html %}
+      </p>
+    </div>
     {% include footer.html %}
   </body>
 </html>
