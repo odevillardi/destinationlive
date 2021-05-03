@@ -1,5 +1,5 @@
 {% assign lives = site.lives | sort: "qui" %}
-<div id="live-table" class="part">
+<div id="live-table">
   {% for live in lives | sort: "qui" %}
     {% include item-list.html %}
   {% endfor %}
