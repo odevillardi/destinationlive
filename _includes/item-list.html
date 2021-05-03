@@ -1,7 +1,8 @@
 <script>getLiveHit('{{ live.liveid }}');</script>
 <div id="link-{{ live.liveid }}" class="live-entry row dark-bg align-center">
   <div class="eight columns td-qui-ou">
-    <h3>{{ live.qui | url_decode | strip_html | strip_newlines }} <span class="text-jet pink-text-shadow">-></span> {{ live.ou | url_decode | strip_html | strip_newlines }}</h3>
+    <h3>{{ live.qui | url_decode | strip_html | strip_newlines }}
+      <span class="text-jet pink-text-shadow">-&#8288;></span>&nbsp;{{ live.ou | url_decode | strip_html | strip_newlines }}</h3>
   </div>
     <div class="two columns live-buttons live-links">
       <a class="button u-full-width" href="{{ live.url }}">Voir</a>
