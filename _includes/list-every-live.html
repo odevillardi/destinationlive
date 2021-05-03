@@ -5,9 +5,11 @@
   {% for live in lives %}
     {% assign artist = live.qui | remove: "%20" %}
     {% assign lieu = live.ou | remove: "%20" %}
+
     {% unless artist == lastartist and lieu == lastlieu %}
       {% include item-list.html %}
     {% endunless %}
+    
     {% assign lastartist = live.qui | remove: "%20" %}
     {% assign lastlieu = live.ou | remove: "%20" %}
   {% endfor %}
