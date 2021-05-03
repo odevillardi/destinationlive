@@ -46,8 +46,7 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid $pink-color;
-  outline: none;
+  outline: 3px solid $blue-color;
 }
 
 input[type="email"]:valid,
@@ -59,7 +58,7 @@ input[type="url"]:valid,
 input[type="password"]:valid,
 textarea:valid,
 select:valid {
-  border: 1px solid $pink-color;
+  border: 1px solid $blue-color;
 }
 
 
