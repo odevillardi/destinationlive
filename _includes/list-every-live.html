@@ -1,16 +1,15 @@
-{% assign lives = site.lives | sort: "qui" %}
-{% assign lastartist = "" %}
-{% assign lastlieu = "" %}
+{% assign lives = site.lives | sort: "liveid" %}
+{% assign liveid = "" %}
+<div class="part">
+  {{ artists }}
+</div>
 <div id="live-table">
   {% for live in lives %}
-    {% assign artist = live.qui | remove: "%20" %}
-    {% assign lieu = live.ou | remove: "%20" %}
 
-    {% unless artist == lastartist and lieu == lastlieu %}
+    {% unless live.liveid == liveid %}
       {% include item-list.html %}
     {% endunless %}
-    
-    {% assign lastartist = live.qui | remove: "%20" %}
-    {% assign lastlieu = live.ou | remove: "%20" %}
+
+    {% assign liveid = live.liveid %}
   {% endfor %}
 </div>

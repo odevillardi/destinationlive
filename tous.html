@@ -8,7 +8,9 @@ hero-p: "Trouve l’artiste que tu veux voir en live et vote pour le faire venir
   {% include head.html %}
   <body class="tous container">
     {% include header.html %}
-    {% include hero.html search = "yes" %}
+    {% assign count = site.lives | map: "liveid" | uniq | size %}
+    {% assign title = count | append: " lives proposés"%}
+    {% include hero.html search = "yes" title = title %}
     <div class="part">
       {% include list-every-live.html %}
     </div>
