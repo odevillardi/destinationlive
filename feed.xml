@@ -15,7 +15,7 @@ layout: null
       <item>
         <title>{{ live.qui | url_decode | strip_html | strip_newlines | escape }} → {{ live.ou | url_decode | strip_html | strip_newlines | escape }}</title>
         <description>
-          Nouveau live de {{ live.qui | url_decode | strip_html | strip_newlines }} à {{ live.ou | url_decode | strip_html | strip_newlines }}<br>
+          Nouveau live de {{ live.qui | url_decode | strip_html | strip_newlines | escape }} à {{ live.ou | url_decode | strip_html | strip_newlines }}<br>
           <iframe class="embed-responsive-16by9" src="https://www.youtube-nocookie.com/embed/{{ live.videoid }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           <noscript>Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ live.videoid }}">{{ page.qui | url_decode }} sur Youtube</a></noscript>
         </description>
