@@ -90,11 +90,22 @@ footer {
 .live-entry {
   margin: 3rem 0;
   padding: 0 2rem 1rem;
+  background-color: $dark-color-transparent;
+  &:hover { background-color: $dark-color; }
+
   @media (min-width: $breakpoint-m) {
     padding: 3rem 5rem;
     h3, .button { margin: 0; }
   }
   &:first-of-type { margin-top: 0; }
+
+  @media (max-width: $breakpoint-m-1) {
+    background-color: $dark-color;
+    .arrow::before {
+      content: "";
+      display: block;
+    }
+  }
 }
 
 .live-entry .live-links,
