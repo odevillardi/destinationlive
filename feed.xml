@@ -16,7 +16,7 @@ layout: null
         <title>{{ live.qui | url_decode | strip_html | strip_newlines | escape }} → {{ live.ou | url_decode | strip_html | strip_newlines | escape }}</title>
         <description>
           Nouveau live de {{ live.qui | url_decode | strip_html | strip_newlines | escape }} à {{ live.ou | url_decode | strip_html | strip_newlines }}<br/>
-          Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ live.videoid }}">{{ page.qui | url_decode }} sur Youtube</a>
+          Voir la vidéo de <a href="https://www.youtube.com/watch?v={{ live.videoid }}">{{ live.qui | url_decode | strip_html | strip_newlines | escape }} sur Youtube</a>
         </description>
         <pubDate>{{ live.created_at | date_to_rfc822 }}</pubDate>
         <link>{{ live.url }}</link>
