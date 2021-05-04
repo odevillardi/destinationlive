@@ -23,7 +23,7 @@ layout: null
         </description>
         <pubDate>{{ live.created_at | date_to_rfc822 }}</pubDate>
         <link>{{ live.url }}</link>
-        <guid isPermaLink="true">{{ live.url }}</guid>
+        <guid isPermaLink="true">{{ live.url | prepend: site.url }}</guid>
       </item>
     {% endfor %}
   </channel>
