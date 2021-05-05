@@ -19,13 +19,6 @@
     </div>
   </div>
   {% if page.hero-links %}
-    <ul class="list-inline">
-      <li>
-        <a class="button button-secondary" href="#live-add">Propose un live</a>
-      </li>
-      <li class="item-break">
-        {% include tous-les-lives.html %}
-      </li>
-    </ul>
+    {% include tous-les-lives.html %}
   {% endif %}
 </div>
