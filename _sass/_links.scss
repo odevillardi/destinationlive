@@ -9,6 +9,5 @@ a {
 }
 
 .newer::before { content: "‹ "; }
-.contact::before { content: "› "; }
 .older::after  { content: " ›"; }
 .more::before { content: "+ "; }

@@ -1,36 +1,43 @@
 ---
 title: Contact
 subtitle: Oups
-layout: default
 noindex: oui
 ---
-<div class="part hero">
-  <h1>Contact</h1>
-  <div class="row">
-    <div class="seven columns">
-      <form aria-label="Formulaire de contact"
-            name="contact"
-            action="/contact/merci"
-            method="POST"
-            data-netlify="true">
-        <label class="required title title-h3" for="your-email">Votre email</label>
-        <input  aria-label="Votre email"
-                id="your-email"
-                class="label-body"
-                type="email"
-                name="_replyto"
-                placeholder="hello@example.com"
-                required>
-        <p><small>Votre email servira uniquement à vous répondre, il sera conservé au maximum 36 mois après la fin de nos échanges.</small></p>
-        <label class="required title title-h3" for="your-message">Votre message</label>
-        <textarea aria-label="Votre message"
-                  id="your-message"
-                  class="label-body u-full-width"
-                  name="message"
-                  placeholder="Bonjour…"
-                  required></textarea>
-        <input aria-label="Bouton de validation" class="primary older" type="submit" value="Envoyer">
-      </form>
+<!DOCTYPE html>
+<html lang="fr-fr">
+  {% include head.html %}
+  <body class="contact container">
+    {% include header.html %}
+    <div class="part hero">
+      <h1>Contact</h1>
+      <div class="row">
+        <div class="seven columns">
+          <form aria-label="Formulaire de contact"
+                name="contact"
+                action="/contact/merci"
+                method="POST"
+                data-netlify="true">
+            <label class="required title title-h3" for="your-email">Votre email</label>
+            <input  aria-label="Votre email"
+                    id="your-email"
+                    class="label-body"
+                    type="email"
+                    name="_replyto"
+                    placeholder="hello@example.com"
+                    required>
+            <p><small>Votre email servira uniquement à vous répondre, il sera conservé au maximum 36 mois après la fin de nos échanges.</small></p>
+            <label class="required title title-h3" for="your-message">Votre message</label>
+            <textarea aria-label="Votre message"
+                      id="your-message"
+                      class="label-body u-full-width"
+                      name="message"
+                      placeholder="Bonjour…"
+                      required></textarea>
+            <input aria-label="Bouton de validation" class="primary" type="submit" value="Envoyer">
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    {% include footer.html %}
+  </body>
+</html>

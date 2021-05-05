@@ -53,6 +53,14 @@ body {
   }
 }
 
+.contact {
+  background-image: url('/img/contact.jpg');
+  background-size: 100%;
+  @media (orientation: portrait) {
+    background-size: 150%;
+  }
+}
+
 header,
 footer {
   margin: 2rem 0;
