@@ -8,9 +8,9 @@
   {%- endif -%}
   <div class="row">
     <div class="seven columns">
-      <p>{{ page.hero-p }}</p>
+      <p class="hero-p">{{ page.hero-p }}</p>
       {% if include.search %}
-        <input  class="icon-input search-input u-full-width"
+        <input  class="icon-input search-input u-full-width hero-input"
                 oninput="w3.filterHTML('#live-table', '.td-qui-ou', this.value)"
                 type="text"
                 placeholder="Chercher…"
