@@ -9,6 +9,8 @@ exports.handler = async (event, context) => {
 
   var formPayload = JSON.parse(event.body).payload;
 
+  console.log(formPayload);
+
   if (formPayload.data.liveid) {
     var nb = formPayload.number;
     var liveid = formPayload.data.liveid;
