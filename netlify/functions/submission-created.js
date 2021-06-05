@@ -38,7 +38,8 @@ exports.handler = async (event, context) => {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'token '+token,
-        'Content-Type': 'text/plain'
+        'Content-Type': 'text/plain',
+        'Accept': 'application/vnd.github.v3+json'
       },
       data: data
     };
