@@ -13,8 +13,8 @@ exports.handler = async (event, context) => {
 
   if (formPayload.data.liveid) {
     var nb = formPayload.number;
-    let liveid = encodeURI(formPayload.data.liveid);
-    let videoid = encodeURI(formPayload.data.videoid);
+    var liveid = encodeURI(formPayload.data.liveid);
+    var videoid = encodeURI(formPayload.data.videoid);
     var qui = encodeURI(formPayload.data.qui);
     var ou = encodeURI(formPayload.data.ou);
     var ip = formPayload.data.ip;
