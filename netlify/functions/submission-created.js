@@ -7,14 +7,14 @@ exports.handler = async (event, context) => {
     return { statusCode: 405, body: "Method Not Allowed" };
   }
 
-  var formPayload = JSON.parse(event.body).payload;
+  var formPayload = JSON.parse(event.body.payload);
 
   console.log(formPayload);
 
   if (formPayload.data.liveid) {
     var nb = formPayload.number;
-    let liveid = formPayload.data.liveid[0];
-    let videoid = formPayload.data.videoid[0];
+    let liveid = formPayload.data.liveid;
+    let videoid = formPayload.data.videoid;
     var qui = encodeURI(formPayload.data.qui);
     var ou = encodeURI(formPayload.data.ou);
     var ip = formPayload.data.ip;
