@@ -5,8 +5,6 @@
       method="POST"
       netlify-honeypot="bot-field"
       data-netlify="true">
-    <input id="liveid"  type="text" name="liveid"  hidden>
-    <input id="videoid" type="text" name="videoid" hidden>
     <label class="hidden">Ne pas remplir ce champ<input name="bot-field"></label>
     <div class="row">
       <div class="six columns">
@@ -28,6 +26,8 @@
                 oninput="javascript:putArtist()"
                 required>
       </div>
+      <input id="liveid" type="hidden" name="liveid">
+      <input id="videoid" type="hidden" name="videoid">
       <div class="two columns">
         <label class="title title-h1 dark-pink-text-shadow">Go&thinsp;!</label>
         <button class="button button-primary u-full-width half-width-s" type="submit"><span>-></span></button>
